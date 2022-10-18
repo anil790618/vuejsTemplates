@@ -346,20 +346,20 @@
           <div class="col-md-6">
             <div class="form-group">
               <!-- Name input-->
-              <input class="form-control" id="name" type="text" placeholder="Your Name *"
+              <input class="form-control" id="name" v-model="name" type="text" placeholder="Your Name *"
                 data-sb-validations="required" />
               <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
             </div>
             <div class="form-group">
               <!-- Email address input-->
-              <input class="form-control" id="email" type="email" placeholder="Your Email *"
+              <input class="form-control" id="email" v-model="email" type="email" placeholder="Your Email *"
                 data-sb-validations="required,email" />
               <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
               <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
             </div>
             <div class="form-group mb-md-0">
               <!-- Phone number input-->
-              <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
+              <input class="form-control" id="phone" v-model="phone" type="tel" placeholder="Your Phone *"
                 data-sb-validations="required" />
               <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
             </div>
@@ -367,7 +367,7 @@
           <div class="col-md-6">
             <div class="form-group form-group-textarea mb-md-0">
               <!-- Message input-->
-              <textarea class="form-control" id="message" placeholder="Your Message *"
+              <textarea class="form-control" id="message" v-model="message" placeholder="Your Message *"
                 data-sb-validations="required"></textarea>
               <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
             </div>
@@ -395,7 +395,7 @@
         </div>
         <!-- Submit Button-->
         <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton"
-            type="submit">Send Message</button></div>
+            type="submit" v-on:click="getData()">Send Message</button></div>
       </form>
     </div>
   </section>
@@ -641,14 +641,24 @@
   </div>
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld.vue'
+<script>  
 
 export default {
-  name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+  name: 'app',
+  data() {
+    return {
+      name:'',
+email:'',
+phone:'',
+message:''
+    }
+  },
+  methods: {
+    getData(){
+      console.warn("YOU HAVE CLICKED",this.name,this.email,this.phone,this.message)
+
+    }
+  }  
 }
 </script>
 
